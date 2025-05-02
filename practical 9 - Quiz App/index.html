@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz App</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f8f9fa; }
+    .container { max-width: 400px; margin: 40px auto; background: #fff; padding: 24px; border-radius: 8px; box-shadow: 0 2px 8px #0001; }
+    .question { font-weight: bold; }
+    .options { margin: 16px 0; }
+    button { padding: 8px 16px; }
+    .score { font-size: 1.2em; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Quiz App</h2>
+    <div id="quiz">
+      <div class="question"></div>
+      <div class="options"></div>
+      <button onclick="next()">Next</button>
+      <div class="score"></div>
+    </div>
+  </div>
+  <script>
+    const questions = [
+      { q: 'Capital of France?', o: ['Paris', 'London', 'Berlin', 'Rome'], a: 0 },
+      { q: '2 + 2 = ?', o: ['3', '4', '5', '6'], a: 1 },
+      { q: 'Color of the sky?', o: ['Blue', 'Green', 'Red', 'Yellow'], a: 0 },
+      { q: 'Largest planet?', o: ['Earth', 'Mars', 'Jupiter', 'Venus'], a: 2 },
+      { q: 'HTML stands for?', o: ['Hyper Trainer Marking Language', 'Hyper Text Markup Language', 'High Text Markup Language', 'None'], a: 1 }
+    ];
+    let current = 0, score = 0, selected = null;
+    function showQ() {
+      if (current >= questions.length) {
+        document.querySelector('.question').textContent = 'Quiz Complete!';
+        document.querySelector('.options').innerHTML = '';
+        document.querySelector('button').style.display = 'none';
+        document.querySelector('.score').textContent = `Your score: ${score} / ${questions.length}`;
+        return;
+      }
+      const q = questions[current];
+      document.querySelector('.question').textContent = q.q;
+      document.querySelector('.score').textContent = '';
+      document.querySelector('button').style.display = '';
+      selected = null;
+      document.querySelector('.options').innerHTML = q.o.map((opt, i) =>
+        `<label><input type='radio' name='opt' value='${i}' onclick='selected=${i}'> ${opt}</label><br>`
+      ).join('');
+    }
+    function next() {
+      if (selected == null) return alert('Select an option!');
+      if (selected == questions[current].a) score++;
+      current++;
+      showQ();
+    }
+    showQ();
+  </script>
+</body>
+</html> 
