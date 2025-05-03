@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [FormsModule],
   template: `
     <div style="max-width:320px;margin:40px auto;font-family:Arial;text-align:center;">
       <h2>Hello Angular</h2>

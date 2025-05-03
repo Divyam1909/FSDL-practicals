@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
+import { NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { FilterPipe } from './filter.pipe';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [FormsModule, NgFor, FilterPipe],
   template: `
     <div style="max-width:400px;margin:40px auto;font-family:Arial;">
       <h2>Movie Search</h2>

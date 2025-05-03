@@ -1,7 +1,17 @@
 import { Component } from '@angular/core';
+import { NgFor, NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+interface Student {
+  name: string;
+  roll: string;
+  grade: string;
+}
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [FormsModule, NgFor, NgIf],
   template: `
     <div style="max-width:400px;margin:40px auto;font-family:Arial;">
       <h2>Student Record Manager</h2>
@@ -26,18 +36,28 @@ import { Component } from '@angular/core';
   `
 })
 export class AppComponent {
-  students = [];
-  student = { name: '', roll: '', grade: '' };
+  students: Student[] = [];
+  student: Student = { name: '', roll: '', grade: '' };
   editIdx = -1;
+  
   addOrUpdate() {
     if (this.editIdx === -1) this.students.push({ ...this.student });
     else this.students[this.editIdx] = { ...this.student };
     this.reset();
   }
+  
   edit(i: number) {
     this.editIdx = i;
     this.student = { ...this.students[i] };
   }
-  del(i: number) { this.students.splice(i, 1); this.reset(); }
-  reset() { this.student = { name: '', roll: '', grade: '' }; this.editIdx = -1; }
+  
+  del(i: number) { 
+    this.students.splice(i, 1); 
+    this.reset(); 
+  }
+  
+  reset() { 
+    this.student = { name: '', roll: '', grade: '' }; 
+    this.editIdx = -1; 
+  }
 } 

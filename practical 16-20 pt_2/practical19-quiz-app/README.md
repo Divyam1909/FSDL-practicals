@@ -2,15 +2,25 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
 
+## Prerequisites
+
+- Make sure you have Node.js and npm installed.
+- Install Angular CLI globally if you haven't already:
+
+```bash
+npm install -g @angular/cli
+```
+
 ## Development server
 
 To start a local development server, run:
 
 ```bash
-ng serve
+npm install
+ng serve --port 4203
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Once the server is running, open your browser and navigate to `http://localhost:4203/`. The application will automatically reload whenever you modify any of the source files.
 
 ## Code scaffolding
 

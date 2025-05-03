@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
+import { NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [NgFor, FormsModule],
   template: `
     <div style="max-width:400px;margin:40px auto;font-family:Arial;">
       <h2>Shopping Cart</h2>
